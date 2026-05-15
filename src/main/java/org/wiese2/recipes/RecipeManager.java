@@ -1,0 +1,78 @@
+package org.wiese2.recipes;
+
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.BlastingRecipe;
+import org.bukkit.inventory.FurnaceRecipe;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.ShapelessRecipe;
+import org.bukkit.inventory.SmokingRecipe;
+import org.bukkit.inventory.StonecuttingRecipe;
+import org.bukkit.plugin.Plugin;
+
+public class RecipeManager {
+	private final Plugin plugin;
+
+	public RecipeManager(Plugin plugin) {
+		this.plugin = plugin;
+	}
+
+	/**
+	 * Registers both a furnace and blast furnace recipe at once.
+	 */
+	public void addSmeltingAndBlasting(String id, Material input, Material output, int amount, float exp, int smeltTime, int blastTime) {
+		ItemStack result = new ItemStack(output, amount);
+
+		// Standard Furnace
+		NamespacedKey smeltKey = new NamespacedKey(plugin, id + "_smelting");
+		FurnaceRecipe furnaceRecipe = new FurnaceRecipe(smeltKey, result, input, exp, smeltTime);
+
+		Bukkit.addRecipe(furnaceRecipe);
+
+		// Blast Furnace (usually twice as fast)
+		NamespacedKey blastKey = new NamespacedKey(plugin, id + "_blasting");
+		BlastingRecipe blastingRecipe = new BlastingRecipe(blastKey, result, input, exp, blastTime);
+
+		Bukkit.addRecipe(blastingRecipe);
+	}
+
+	/**
+	 * Registers a shapeless crafting recipe.
+	 */
+	public void addShapeless(String id, Material output, int amount, Material... ingredients) {
+		NamespacedKey key = new NamespacedKey(plugin, id);
+		ItemStack result = new ItemStack(output, amount);
+		ShapelessRecipe recipe = new ShapelessRecipe(key, result);
+
+		for (Material mat : ingredients) {
+			recipe.addIngredient(mat);
+		}
+
+		Bukkit.addRecipe(recipe);
+	}
+
+	/**
+	 * Registers a Stonecutter recipe.
+	 */
+	public void addStonecutting(String id, Material input, Material output, int amount) {
+		NamespacedKey key = new NamespacedKey(plugin, id + "_stonecutting");
+		ItemStack result = new ItemStack(output, amount);
+
+		StonecuttingRecipe recipe = new StonecuttingRecipe(key, result, input);
+
+		Bukkit.addRecipe(recipe);
+	}
+
+	/**
+	 * Registers a Smoker recipe.
+	 */
+	public void addSmoking(String id, Material input, Material output, int amount, float exp, int cookTime) {
+		NamespacedKey key = new NamespacedKey(plugin, id + "_smoking");
+		ItemStack result = new ItemStack(output, amount);
+
+		SmokingRecipe recipe = new SmokingRecipe(key, result, input, exp, cookTime);
+
+		Bukkit.addRecipe(recipe);
+	}
+}

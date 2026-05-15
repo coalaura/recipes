@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/bukkit-plugin.json
+name: Recipes
+version: "@version@"
+main: org.wiese2.recipes.Recipes
+api-version: "1.21"
