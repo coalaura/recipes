@@ -14,7 +14,7 @@ A lightweight Paper 1.21.10 plugin that expands the vanilla crafting system with
 * **Melting:** Smelt Blue Ice into Packed Ice and Packed Ice into regular Ice.
 
 ### Washing & Bleaching
-* Clean dyed items (Wool, Carpets, Glass, Beds, Terracotta, Concrete) back to their default white or uncolored states by right-clicking a Water Cauldron.
+* Clean dyed items (Wool, Carpets, Glass (& Panes), Beds, Terracotta, Concrete, Candles) back to their default white or uncolored states by right-clicking a Water Cauldron.
 * Consumes one water level from the cauldron per use, allowing you to efficiently bleach entire stacks in your hand at once.
 
 ### Quality of Life
