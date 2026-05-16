@@ -15,7 +15,6 @@ public class RecipeDefinitions {
 		registerStoneRecycling();
 		registerLeatherRecycling();
 		registerBlockUncrafting();
-		registerBleaching();
 		registerBulkSmelting();
 		registerMisc();
 	}
@@ -302,125 +301,6 @@ public class RecipeDefinitions {
 			int amount = (int) recipe[2];
 
 			manager.addStonecutting(input.name().toLowerCase() + "_recycling", input, output, amount);
-		}
-	}
-
-	private void registerBleaching() {
-		// Bleach colored items back to white
-		// @formatter:off
-		Object[][] washableItems = {
-			{ Material.BLACK_WOOL, Material.WHITE_WOOL },
-			{ Material.BLUE_WOOL, Material.WHITE_WOOL },
-			{ Material.BROWN_WOOL, Material.WHITE_WOOL },
-			{ Material.CYAN_WOOL, Material.WHITE_WOOL },
-			{ Material.GRAY_WOOL, Material.WHITE_WOOL },
-			{ Material.GREEN_WOOL, Material.WHITE_WOOL },
-			{ Material.LIGHT_BLUE_WOOL, Material.WHITE_WOOL },
-			{ Material.LIGHT_GRAY_WOOL, Material.WHITE_WOOL },
-			{ Material.LIME_WOOL, Material.WHITE_WOOL },
-			{ Material.MAGENTA_WOOL, Material.WHITE_WOOL },
-			{ Material.ORANGE_WOOL, Material.WHITE_WOOL },
-			{ Material.PINK_WOOL, Material.WHITE_WOOL },
-			{ Material.PURPLE_WOOL, Material.WHITE_WOOL },
-			{ Material.RED_WOOL, Material.WHITE_WOOL },
-			{ Material.YELLOW_WOOL, Material.WHITE_WOOL },
-
-			// Carpets
-			{ Material.BLACK_CARPET, Material.WHITE_CARPET },
-			{ Material.BLUE_CARPET, Material.WHITE_CARPET },
-			{ Material.BROWN_CARPET, Material.WHITE_CARPET },
-			{ Material.CYAN_CARPET, Material.WHITE_CARPET },
-			{ Material.GRAY_CARPET, Material.WHITE_CARPET },
-			{ Material.GREEN_CARPET, Material.WHITE_CARPET },
-			{ Material.LIGHT_BLUE_CARPET, Material.WHITE_CARPET },
-			{ Material.LIGHT_GRAY_CARPET, Material.WHITE_CARPET },
-			{ Material.LIME_CARPET, Material.WHITE_CARPET },
-			{ Material.MAGENTA_CARPET, Material.WHITE_CARPET },
-			{ Material.ORANGE_CARPET, Material.WHITE_CARPET },
-			{ Material.PINK_CARPET, Material.WHITE_CARPET },
-			{ Material.PURPLE_CARPET, Material.WHITE_CARPET },
-			{ Material.RED_CARPET, Material.WHITE_CARPET },
-			{ Material.YELLOW_CARPET, Material.WHITE_CARPET },
-
-			// Glass
-			{ Material.BLACK_STAINED_GLASS, Material.GLASS },
-			{ Material.BLUE_STAINED_GLASS, Material.GLASS },
-			{ Material.BROWN_STAINED_GLASS, Material.GLASS },
-			{ Material.CYAN_STAINED_GLASS, Material.GLASS },
-			{ Material.GRAY_STAINED_GLASS, Material.GLASS },
-			{ Material.GREEN_STAINED_GLASS, Material.GLASS },
-			{ Material.LIGHT_BLUE_STAINED_GLASS, Material.GLASS },
-			{ Material.LIGHT_GRAY_STAINED_GLASS, Material.GLASS },
-			{ Material.LIME_STAINED_GLASS, Material.GLASS },
-			{ Material.MAGENTA_STAINED_GLASS, Material.GLASS },
-			{ Material.ORANGE_STAINED_GLASS, Material.GLASS },
-			{ Material.PINK_STAINED_GLASS, Material.GLASS },
-			{ Material.PURPLE_STAINED_GLASS, Material.GLASS },
-			{ Material.RED_STAINED_GLASS, Material.GLASS },
-			{ Material.YELLOW_STAINED_GLASS, Material.GLASS },
-
-			// Beds
-			{ Material.BLACK_BED, Material.WHITE_BED },
-			{ Material.BLUE_BED, Material.WHITE_BED },
-			{ Material.BROWN_BED, Material.WHITE_BED },
-			{ Material.CYAN_BED, Material.WHITE_BED },
-			{ Material.GRAY_BED, Material.WHITE_BED },
-			{ Material.GREEN_BED, Material.WHITE_BED },
-			{ Material.LIGHT_BLUE_BED, Material.WHITE_BED },
-			{ Material.LIGHT_GRAY_BED, Material.WHITE_BED },
-			{ Material.LIME_BED, Material.WHITE_BED },
-			{ Material.MAGENTA_BED, Material.WHITE_BED },
-			{ Material.ORANGE_BED, Material.WHITE_BED },
-			{ Material.PINK_BED, Material.WHITE_BED },
-			{ Material.PURPLE_BED, Material.WHITE_BED },
-			{ Material.RED_BED, Material.WHITE_BED },
-			{ Material.YELLOW_BED, Material.WHITE_BED },
-
-			// Terracotta
-			{ Material.BLACK_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.BLUE_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.BROWN_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.CYAN_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.GRAY_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.GREEN_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.LIGHT_BLUE_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.LIGHT_GRAY_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.LIME_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.MAGENTA_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.ORANGE_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.PINK_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.PURPLE_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.RED_TERRACOTTA, Material.TERRACOTTA },
-			{ Material.YELLOW_TERRACOTTA, Material.TERRACOTTA },
-
-			// Concrete
-			{ Material.BLACK_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.BLUE_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.BROWN_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.CYAN_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.GRAY_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.GREEN_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.LIGHT_BLUE_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.LIGHT_GRAY_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.LIME_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.MAGENTA_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.ORANGE_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.PINK_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.PURPLE_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.RED_CONCRETE, Material.WHITE_CONCRETE },
-			{ Material.YELLOW_CONCRETE, Material.WHITE_CONCRETE }
-		};
-		// @formatter:on
-
-		for (Object[] washItem : washableItems) {
-			Material input = (Material) washItem[0];
-			Material output = (Material) washItem[1];
-
-			// 1 Item + 1 Water Bucket -> 1 Clean Item
-			manager.addShapeless("wash_" + input.name().toLowerCase(), output, 1, input, Material.WATER_BUCKET);
-
-			// 8 Items + 1 Water Bucket -> 8 Clean Items
-			manager.addShapeless("wash_bulk_" + input.name().toLowerCase(), output, 8, input, input, input, input, input, input, input, input, Material.WATER_BUCKET);
 		}
 	}
 
