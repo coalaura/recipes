@@ -27,6 +27,16 @@ public class RecipeManager {
 		this.plugin = plugin;
 	}
 
+	public Material resolveMaterial(Object input) {
+		if (input instanceof Material material) {
+			return material;
+		} else if (input instanceof String string) {
+			return Material.matchMaterial(string);
+		}
+
+		return null;
+	}
+
 	/**
 	 * Registers both a furnace and blast furnace recipe at once.
 	 */

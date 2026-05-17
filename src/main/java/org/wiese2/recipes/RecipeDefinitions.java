@@ -75,113 +75,117 @@ public class RecipeDefinitions {
             {Material.CHAINMAIL_BOOTS, Material.IRON_NUGGET, 5},
 
 			// Copper Armor
-			{Material.COPPER_CHESTPLATE, Material.COPPER_INGOT, 4},
-            {Material.COPPER_LEGGINGS, Material.COPPER_INGOT, 3},
-            {Material.COPPER_HELMET, Material.COPPER_INGOT, 2},
-            {Material.COPPER_BOOTS, Material.COPPER_INGOT, 2},
+			{"COPPER_CHESTPLATE", "COPPER_INGOT", 4},
+            {"COPPER_LEGGINGS", "COPPER_INGOT", 3},
+            {"COPPER_HELMET", "COPPER_INGOT", 2},
+            {"COPPER_BOOTS", "COPPER_INGOT", 2},
 
             // Copper Tools
-            {Material.COPPER_PICKAXE, Material.COPPER_INGOT, 1},
-            {Material.COPPER_AXE, Material.COPPER_INGOT, 1},
-            {Material.COPPER_SWORD, Material.COPPER_INGOT, 1},
-            {Material.COPPER_HOE, Material.COPPER_INGOT, 1},
-            {Material.COPPER_SHOVEL, Material.COPPER_NUGGET, 5},
+            {"COPPER_PICKAXE", "COPPER_INGOT", 1},
+            {"COPPER_AXE", "COPPER_INGOT", 1},
+            {"COPPER_SWORD", "COPPER_INGOT", 1},
+            {"COPPER_HOE", "COPPER_INGOT", 1},
+            {"COPPER_SHOVEL", "COPPER_NUGGET", 5},
 
 			// Copper Chest
-			{Material.COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.EXPOSED_COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.WEATHERED_COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.OXIDIZED_COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.WAXED_COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.WAXED_EXPOSED_COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.WAXED_WEATHERED_COPPER_CHEST, Material.COPPER_INGOT, 4},
-            {Material.WAXED_OXIDIZED_COPPER_CHEST, Material.COPPER_INGOT, 4},
+			{"COPPER_CHEST", "COPPER_INGOT", 4},
+            {"EXPOSED_COPPER_CHEST", "COPPER_INGOT", 4},
+            {"WEATHERED_COPPER_CHEST", "COPPER_INGOT", 4},
+            {"OXIDIZED_COPPER_CHEST", "COPPER_INGOT", 4},
+            {"WAXED_COPPER_CHEST", "COPPER_INGOT", 4},
+            {"WAXED_EXPOSED_COPPER_CHEST", "COPPER_INGOT", 4},
+            {"WAXED_WEATHERED_COPPER_CHEST", "COPPER_INGOT", 4},
+            {"WAXED_OXIDIZED_COPPER_CHEST", "COPPER_INGOT", 4},
 
             // Lightning Rods
-            {Material.LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.EXPOSED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.WEATHERED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.OXIDIZED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.WAXED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.WAXED_EXPOSED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.WAXED_WEATHERED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
-            {Material.WAXED_OXIDIZED_LIGHTNING_ROD, Material.COPPER_INGOT, 1},
+            {"LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"EXPOSED_LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"WEATHERED_LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"OXIDIZED_LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"WAXED_LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"WAXED_EXPOSED_LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"WAXED_WEATHERED_LIGHTNING_ROD", "COPPER_INGOT", 1},
+            {"WAXED_OXIDIZED_LIGHTNING_ROD", "COPPER_INGOT", 1},
 
             // Copper Bars
-            {Material.COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.EXPOSED_COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.WEATHERED_COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.OXIDIZED_COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.WAXED_COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.WAXED_EXPOSED_COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.WAXED_WEATHERED_COPPER_BARS, Material.COPPER_NUGGET, 2},
-            {Material.WAXED_OXIDIZED_COPPER_BARS, Material.COPPER_NUGGET, 2},
+            {"COPPER_BARS", "COPPER_NUGGET", 2},
+            {"EXPOSED_COPPER_BARS", "COPPER_NUGGET", 2},
+            {"WEATHERED_COPPER_BARS", "COPPER_NUGGET", 2},
+            {"OXIDIZED_COPPER_BARS", "COPPER_NUGGET", 2},
+            {"WAXED_COPPER_BARS", "COPPER_NUGGET", 2},
+            {"WAXED_EXPOSED_COPPER_BARS", "COPPER_NUGGET", 2},
+            {"WAXED_WEATHERED_COPPER_BARS", "COPPER_NUGGET", 2},
+            {"WAXED_OXIDIZED_COPPER_BARS", "COPPER_NUGGET", 2},
 
             // Copper Chains
-            {Material.COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.EXPOSED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.WEATHERED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.OXIDIZED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.WAXED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.WAXED_EXPOSED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.WAXED_WEATHERED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
-            {Material.WAXED_OXIDIZED_COPPER_CHAIN, Material.COPPER_NUGGET, 5},
+            {"COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"EXPOSED_COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"WEATHERED_COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"OXIDIZED_COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"WAXED_COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"WAXED_EXPOSED_COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"WAXED_WEATHERED_COPPER_CHAIN", "COPPER_NUGGET", 5},
+            {"WAXED_OXIDIZED_COPPER_CHAIN", "COPPER_NUGGET", 5},
 
 			// Copper Door
-			{Material.COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.EXPOSED_COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.WEATHERED_COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.OXIDIZED_COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.WAXED_COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.WAXED_EXPOSED_COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.WAXED_WEATHERED_COPPER_DOOR, Material.COPPER_INGOT, 1},
-            {Material.WAXED_OXIDIZED_COPPER_DOOR, Material.COPPER_INGOT, 1},
+			{"COPPER_DOOR", "COPPER_INGOT", 1},
+            {"EXPOSED_COPPER_DOOR", "COPPER_INGOT", 1},
+            {"WEATHERED_COPPER_DOOR", "COPPER_INGOT", 1},
+            {"OXIDIZED_COPPER_DOOR", "COPPER_INGOT", 1},
+            {"WAXED_COPPER_DOOR", "COPPER_INGOT", 1},
+            {"WAXED_EXPOSED_COPPER_DOOR", "COPPER_INGOT", 1},
+            {"WAXED_WEATHERED_COPPER_DOOR", "COPPER_INGOT", 1},
+            {"WAXED_OXIDIZED_COPPER_DOOR", "COPPER_INGOT", 1},
 
 			// Copper Trapdoor
-			{Material.COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.EXPOSED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.WEATHERED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.OXIDIZED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.WAXED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.WAXED_EXPOSED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.WAXED_WEATHERED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
-            {Material.WAXED_OXIDIZED_COPPER_TRAPDOOR, Material.COPPER_INGOT, 2},
+			{"COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"EXPOSED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"WEATHERED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"OXIDIZED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"WAXED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"WAXED_EXPOSED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"WAXED_WEATHERED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
+            {"WAXED_OXIDIZED_COPPER_TRAPDOOR", "COPPER_INGOT", 2},
 
 			// Chiseled Copper
-			{Material.CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.EXPOSED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.WEATHERED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.OXIDIZED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.WAXED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.WAXED_EXPOSED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.WAXED_WEATHERED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
-            {Material.WAXED_OXIDIZED_CHISELED_COPPER, Material.COPPER_INGOT, 4},
+			{"CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"EXPOSED_CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"WEATHERED_CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"OXIDIZED_CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"WAXED_CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"WAXED_EXPOSED_CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"WAXED_WEATHERED_CHISELED_COPPER", "COPPER_INGOT", 4},
+            {"WAXED_OXIDIZED_CHISELED_COPPER", "COPPER_INGOT", 4},
 
 			// Copper Grate
-            {Material.COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.EXPOSED_COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.WEATHERED_COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.OXIDIZED_COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.WAXED_COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.WAXED_EXPOSED_COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.WAXED_WEATHERED_COPPER_GRATE, Material.COPPER_INGOT, 4},
-            {Material.WAXED_OXIDIZED_COPPER_GRATE, Material.COPPER_INGOT, 4},
+            {"COPPER_GRATE", "COPPER_INGOT", 4},
+            {"EXPOSED_COPPER_GRATE", "COPPER_INGOT", 4},
+            {"WEATHERED_COPPER_GRATE", "COPPER_INGOT", 4},
+            {"OXIDIZED_COPPER_GRATE", "COPPER_INGOT", 4},
+            {"WAXED_COPPER_GRATE", "COPPER_INGOT", 4},
+            {"WAXED_EXPOSED_COPPER_GRATE", "COPPER_INGOT", 4},
+            {"WAXED_WEATHERED_COPPER_GRATE", "COPPER_INGOT", 4},
+            {"WAXED_OXIDIZED_COPPER_GRATE", "COPPER_INGOT", 4},
 
 			// Copper Bulb
-            {Material.COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.EXPOSED_COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.WEATHERED_COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.OXIDIZED_COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.WAXED_COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.WAXED_EXPOSED_COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.WAXED_WEATHERED_COPPER_BULB, Material.COPPER_INGOT, 3},
-            {Material.WAXED_OXIDIZED_COPPER_BULB, Material.COPPER_INGOT, 3}
+            {"COPPER_BULB", "COPPER_INGOT", 3},
+            {"EXPOSED_COPPER_BULB", "COPPER_INGOT", 3},
+            {"WEATHERED_COPPER_BULB", "COPPER_INGOT", 3},
+            {"OXIDIZED_COPPER_BULB", "COPPER_INGOT", 3},
+            {"WAXED_COPPER_BULB", "COPPER_INGOT", 3},
+            {"WAXED_EXPOSED_COPPER_BULB", "COPPER_INGOT", 3},
+            {"WAXED_WEATHERED_COPPER_BULB", "COPPER_INGOT", 3},
+            {"WAXED_OXIDIZED_COPPER_BULB", "COPPER_INGOT", 3}
 		};
 		// @formatter:on
 
 		for (Object[] recipe : metalRecycling) {
-			Material input = (Material) recipe[0];
-			Material output = (Material) recipe[1];
+			Material input = manager.resolveMaterial(recipe[0]);
+			Material output = manager.resolveMaterial(recipe[1]);
+
+			if (input == null || output == null) {
+				continue;
+			}
 
 			int amount = (int) recipe[2];
 
@@ -295,8 +299,12 @@ public class RecipeDefinitions {
 		// @formatter:on
 
 		for (Object[] recipe : leatherRecycling) {
-			Material input = (Material) recipe[0];
-			Material output = (Material) recipe[1];
+			Material input = manager.resolveMaterial(recipe[0]);
+			Material output = manager.resolveMaterial(recipe[1]);
+
+			if (input == null || output == null) {
+				continue;
+			}
 
 			int amount = (int) recipe[2];
 
@@ -331,13 +339,17 @@ public class RecipeDefinitions {
 		Object[][] bulkSmelting = {
 			{ Material.RAW_IRON_BLOCK, Material.IRON_BLOCK },
 			{ Material.RAW_GOLD_BLOCK, Material.GOLD_BLOCK },
-			{ Material.RAW_COPPER_BLOCK, Material.COPPER_BLOCK },
+			{ "RAW_COPPER_BLOCK", "COPPER_BLOCK" },
 		};
 		// @formatter:on
 
 		for (Object[] recipe : bulkSmelting) {
-			Material input = (Material) recipe[0];
-			Material output = (Material) recipe[1];
+			Material input = manager.resolveMaterial(recipe[0]);
+			Material output = manager.resolveMaterial(recipe[1]);
+
+			if (input == null || output == null) {
+				continue;
+			}
 
 			manager.addSmeltingAndBlasting(input.name().toLowerCase() + "_bulk", input, output, 1, 6.3f, 1800, 900);
 		}
