@@ -1,11 +1,15 @@
 package org.wiese2.recipes;
 
+import java.util.Iterator;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.BlastingRecipe;
+import org.bukkit.inventory.CookingRecipe;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.SmokingRecipe;
 import org.bukkit.inventory.StonecuttingRecipe;
@@ -22,6 +26,19 @@ public class RecipeManager {
 	 * Registers both a furnace and blast furnace recipe at once.
 	 */
 	public void addSmeltingAndBlasting(String id, Material input, Material output, int amount, float exp, int smeltTime, int blastTime) {
+		Iterator<Recipe> iterator = Bukkit.recipeIterator();
+		while (iterator.hasNext()) {
+			Recipe existing = iterator.next();
+
+			if (existing instanceof FurnaceRecipe || existing instanceof BlastingRecipe) {
+				CookingRecipe<?> recipe = (CookingRecipe<?>) existing;
+
+				if (recipe.getInputChoice().test(new ItemStack(input))) {
+					iterator.remove();
+				}
+			}
+		}
+
 		ItemStack result = new ItemStack(output, amount);
 
 		// Standard Furnace
