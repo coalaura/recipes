@@ -18,6 +18,7 @@ public class Recipes extends JavaPlugin {
         definitions.registerAll();
 
         pluginManager.registerEvents(new BleachListener(recipeManager), this);
+        pluginManager.registerEvents(new StonecutterListener(), this);
 
         getLogger().info("Recipes ready!");
     }

@@ -39,6 +39,7 @@ public class RecipeDefinitions {
 			// Gold Items/Blocks
             {Material.CLOCK, Material.GOLD_INGOT, 2},
             {Material.LIGHT_WEIGHTED_PRESSURE_PLATE, Material.GOLD_INGOT, 1},
+            {Material.BELL, Material.GOLD_INGOT, 2},
 
 			// Iron Armor
             {Material.IRON_CHESTPLATE, Material.IRON_INGOT, 4},
@@ -67,6 +68,7 @@ public class RecipeDefinitions {
             {Material.HEAVY_WEIGHTED_PRESSURE_PLATE, Material.IRON_INGOT, 1},
             {Material.LANTERN, Material.IRON_NUGGET, 4},
             {Material.SOUL_LANTERN, Material.IRON_NUGGET, 4},
+            {Material.HOPPER, Material.IRON_INGOT, 2},
 
             // Chainmail Armor
             {Material.CHAINMAIL_CHESTPLATE, Material.IRON_NUGGET, 12},
@@ -79,6 +81,7 @@ public class RecipeDefinitions {
             {"COPPER_LEGGINGS", "COPPER_INGOT", 3},
             {"COPPER_HELMET", "COPPER_INGOT", 2},
             {"COPPER_BOOTS", "COPPER_INGOT", 2},
+			{"COPPER_HORSE_ARMOR", "COPPER_INGOT", 3},
 
             // Copper Tools
             {"COPPER_PICKAXE", "COPPER_INGOT", 1},
@@ -387,5 +390,16 @@ public class RecipeDefinitions {
 
 		// Glasscutting
 		manager.addStonecutting("cut_glass_to_panes", Material.GLASS, Material.GLASS_PANE, 2);
+
+		// Break apart minecarts
+		manager.addStonecutting("break_apart_hopper_minecart", Material.HOPPER_MINECART, Material.HOPPER, 1);
+		manager.addStonecutting("break_apart_chest_minecart", Material.CHEST_MINECART, Material.CHEST, 1);
+		manager.addStonecutting("break_apart_furnace_minecart", Material.FURNACE_MINECART, Material.FURNACE, 1);
+
+		// Stonecutter block recycling
+		manager.addStonecutting("cut_furnace", Material.FURNACE, Material.COBBLESTONE, 4);
+		manager.addStonecutting("cut_dropper", Material.DROPPER, Material.COBBLESTONE, 4);
+		manager.addStonecutting("cut_dispenser", Material.DISPENSER, Material.COBBLESTONE, 4);
+		manager.addStonecutting("cut_flint_and_steel", Material.FLINT_AND_STEEL, Material.IRON_INGOT, 1);
 	}
 }
