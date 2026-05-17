@@ -224,7 +224,7 @@ public class RecipeDefinitions {
 
 	private void registerStoneRecycling() {
 		// @formatter:off
-		Material[][] stoneTypes = {
+		Object[][] stoneTypes = {
 			// Basic
 			{ Material.COBBLESTONE_SLAB, Material.COBBLESTONE_STAIRS, Material.COBBLESTONE },
 			{ Material.STONE_BRICK_SLAB, Material.STONE_BRICK_STAIRS, Material.STONE_BRICKS },
@@ -253,9 +253,9 @@ public class RecipeDefinitions {
 			{ Material.PURPUR_SLAB, Material.PURPUR_STAIRS, Material.PURPUR_BLOCK },
 
 			// Tuff
-			{ Material.TUFF_SLAB, Material.TUFF_STAIRS, Material.TUFF },
-			{ Material.POLISHED_TUFF_SLAB, Material.POLISHED_TUFF_STAIRS, Material.POLISHED_TUFF },
-			{ Material.TUFF_BRICK_SLAB, Material.TUFF_BRICK_STAIRS, Material.TUFF_BRICKS },
+			{ "TUFF_SLAB", "TUFF_STAIRS", "TUFF" },
+			{ "POLISHED_TUFF_SLAB", "POLISHED_TUFF_STAIRS", "POLISHED_TUFF" },
+			{ "TUFF_BRICK_SLAB", "TUFF_BRICK_STAIRS", "TUFF_BRICKS" },
 
 			// Misc
 			{ Material.PRISMARINE_SLAB, Material.PRISMARINE_STAIRS, Material.PRISMARINE },
@@ -271,14 +271,22 @@ public class RecipeDefinitions {
 		};
 		// @formatter:on
 
-		for (Material[] stone : stoneTypes) {
-			String baseName = stone[2].name().toLowerCase();
+		for (Object[] stone : stoneTypes) {
+			Material slab = manager.resolveMaterial(stone[0]);
+			Material stairs = manager.resolveMaterial(stone[1]);
+			Material block = manager.resolveMaterial(stone[2]);
+
+			if (slab == null || stairs == null || block == null) {
+				continue;
+			}
+
+			String baseName = block.name().toLowerCase();
 
 			// 2 Slabs -> 1 Block
-			manager.addShapeless(baseName + "_from_slabs", stone[2], 1, stone[0], stone[0]);
+			manager.addShapeless(baseName + "_from_slabs", block, 1, slab, slab);
 
 			// 4 Stairs -> 3 Blocks
-			manager.addShapeless(baseName + "_from_stairs", stone[2], 3, stone[1], stone[1], stone[1], stone[1]);
+			manager.addShapeless(baseName + "_from_stairs", block, 3, stairs, stairs, stairs, stairs);
 		}
 
 		// Stonecutter Crushing

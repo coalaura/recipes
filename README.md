@@ -1,6 +1,6 @@
 # Recipes
 
-A lightweight Paper plugin (supports 1.21.x - 26.x) that expands the vanilla crafting system with balanced recycling and Quality of Life (QoL) recipes. The goal is to allow players to reclaim materials and simplify certain tasks without breaking the vanilla feel of the game.
+A lightweight Paper plugin (supports 1.20.x - 26.x) that expands the vanilla crafting system with balanced recycling and Quality of Life (QoL) recipes. The goal is to allow players to reclaim materials and simplify certain tasks without breaking the vanilla feel of the game.
 
 ## Features
 

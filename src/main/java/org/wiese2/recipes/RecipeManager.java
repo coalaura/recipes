@@ -37,6 +37,16 @@ public class RecipeManager {
 		return null;
 	}
 
+	public ItemStack stackWithType(ItemStack input, Material type) {
+		ItemStack stack = new ItemStack(type, input.getAmount());
+
+		if (input.hasItemMeta()) {
+			stack.setItemMeta(input.getItemMeta());
+		}
+
+		return stack;
+	}
+
 	/**
 	 * Registers both a furnace and blast furnace recipe at once.
 	 */
