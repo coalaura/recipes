@@ -1,6 +1,8 @@
 package org.wiese2.recipes;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -26,17 +28,27 @@ public class RecipeManager {
 	 * Registers both a furnace and blast furnace recipe at once.
 	 */
 	public void addSmeltingAndBlasting(String id, Material input, Material output, int amount, float exp, int smeltTime, int blastTime) {
+		List<NamespacedKey> remove = new ArrayList<>();
 		Iterator<Recipe> iterator = Bukkit.recipeIterator();
-		while (iterator.hasNext()) {
-			Recipe existing = iterator.next();
 
-			if (existing instanceof FurnaceRecipe || existing instanceof BlastingRecipe) {
-				CookingRecipe<?> recipe = (CookingRecipe<?>) existing;
+		while (iterator.hasNext()) {
+			Recipe exists = iterator.next();
+
+			if (exists instanceof FurnaceRecipe || exists instanceof BlastingRecipe) {
+				CookingRecipe<?> recipe = (CookingRecipe<?>) exists;
 
 				if (recipe.getInputChoice().test(new ItemStack(input))) {
-					iterator.remove();
+					NamespacedKey key = ((org.bukkit.Keyed) exists).getKey();
+
+					if (!key.getNamespace().equals(plugin.getName().toLowerCase())) {
+						remove.add(key);
+					}
 				}
 			}
+		}
+
+		for (NamespacedKey key : remove) {
+			Bukkit.removeRecipe(key);
 		}
 
 		ItemStack result = new ItemStack(output, amount);
