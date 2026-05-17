@@ -12,10 +12,13 @@ import org.bukkit.inventory.CookingRecipe;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.inventory.SmokingRecipe;
 import org.bukkit.inventory.StonecuttingRecipe;
 import org.bukkit.plugin.Plugin;
+
+import io.papermc.paper.potion.PotionMix;
 
 public class RecipeManager {
 	private final Plugin plugin;
@@ -103,5 +106,20 @@ public class RecipeManager {
 		SmokingRecipe recipe = new SmokingRecipe(key, result, input, exp, cookTime);
 
 		Bukkit.addRecipe(recipe);
+	}
+
+	/**
+	 * Registers a Brewing Stand recipe.
+	 */
+	public void addBrewing(String id, Material ingredient, Material output, int amount) {
+		NamespacedKey key = new NamespacedKey(plugin, id);
+		ItemStack result = new ItemStack(output, amount);
+
+		RecipeChoice inputChoice = new RecipeChoice.MaterialChoice(Material.GLASS_BOTTLE);
+		RecipeChoice ingredientChoice = new RecipeChoice.MaterialChoice(ingredient);
+
+		PotionMix mix = new PotionMix(key, result, inputChoice, ingredientChoice);
+
+		Bukkit.getPotionBrewer().addPotionMix(mix);
 	}
 }

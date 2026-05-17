@@ -351,7 +351,7 @@ public class RecipeDefinitions {
 		manager.addSmeltingAndBlasting("gravel_to_flint", Material.GRAVEL, Material.FLINT, 1, 0.1f, 200, 100);
 
 		// Honeycomb to Honey
-		manager.addShapeless("honey_from_comb", Material.HONEY_BOTTLE, 1, Material.HONEYCOMB, Material.GLASS_BOTTLE);
+		manager.addBrewing("honey_from_comb", Material.HONEYCOMB, Material.HONEY_BOTTLE, 1);
 
 		// Poisonous Potato to Green Dye
 		manager.addSmeltingAndBlasting("dye_from_potato", Material.POISONOUS_POTATO, Material.GREEN_DYE, 1, 0.1f, 200, 100);
