@@ -2,4 +2,4 @@
 name: Recipes
 version: "@version@"
 main: org.wiese2.recipes.Recipes
-api-version: "1.21"
+api-version: "1.20"

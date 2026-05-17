@@ -4,7 +4,6 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.entity.Player;
@@ -102,8 +101,6 @@ public class BleachListener implements Listener {
 
 		player.getInventory().setItemInMainHand(manager.stackWithType(item, cleanMaterial));
 		player.updateInventory();
-
-		player.playSound(block.getLocation(), Sound.ENTITY_FISHING_BOBBER_SPLASH, 1.0f, 1.0f);
 
 		Levelled cauldronData = (Levelled) block.getBlockData();
 
