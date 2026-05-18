@@ -310,6 +310,9 @@ public class RecipeDefinitions {
 		// Stonecutter Crushing
 		manager.addStonecutting("crush_cobble_to_gravel", Material.COBBLESTONE, Material.GRAVEL, 1);
 		manager.addStonecutting("crush_gravel_to_sand", Material.GRAVEL, Material.SAND, 1);
+
+		// Cut Bundles
+		manager.addStonecutting("cut_bundles", Material.BUNDLE, Material.LEATHER, 1);
 	}
 
 	private void registerLeatherRecycling() {
