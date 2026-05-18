@@ -202,7 +202,9 @@ public class RecipeDefinitions {
 
 			int amount = (int) recipe[2];
 
-			manager.addSmeltingAndBlasting(input.name().toLowerCase() + "_recycling", input, output, amount, 0.5f, 200, 100);
+			String baseName = input.name().toLowerCase();
+
+			manager.addSmeltingAndBlasting(baseName + "_recycling", input, output, amount, 0.5f, 200, 100);
 		}
 	}
 
@@ -334,7 +336,9 @@ public class RecipeDefinitions {
 				continue;
 			}
 
-			manager.addStonecutting(input.name().toLowerCase() + "_recycling", input, Material.COBBLESTONE, 1);
+			String baseName = input.name().toLowerCase();
+
+			manager.addStonecutting(baseName + "_recycling", input, Material.COBBLESTONE, 1);
 		}
 
 		// Stonecutter Crushing
@@ -368,8 +372,10 @@ public class RecipeDefinitions {
 				continue;
 			}
 
-			manager.addStonecutting(planks.name().toLowerCase() + "_to_fence", planks, fence, 1);
-			manager.addStonecutting(planks.name().toLowerCase() + "_to_fence_gate", planks, gate, 1);
+			String baseName = planks.name().toLowerCase();
+
+			manager.addStonecutting(baseName + "_to_fence", planks, fence, 1);
+			manager.addStonecutting(baseName + "_to_fence_gate", planks, gate, 1);
 		}
 
 		// @formatter:off
@@ -418,7 +424,9 @@ public class RecipeDefinitions {
 				continue;
 			}
 
-			manager.addStonecutting(block.name().toLowerCase() + "_to_wall", block, wall, 1);
+			String baseName = "%s_to_%s".formatted(block.name().toLowerCase(), wall.name().toLowerCase());
+
+			manager.addStonecutting(baseName, block, wall, 1);
 		}
 	}
 
@@ -446,7 +454,9 @@ public class RecipeDefinitions {
 
 			int amount = (int) recipe[1];
 
-			manager.addStonecutting(input.name().toLowerCase() + "_recycling", input, Material.LEATHER, amount);
+			String baseName = input.name().toLowerCase();
+
+			manager.addStonecutting(baseName + "_recycling", input, Material.LEATHER, amount);
 		}
 	}
 
@@ -497,7 +507,9 @@ public class RecipeDefinitions {
 				continue;
 			}
 
-			manager.addSmeltingAndBlasting(input.name().toLowerCase() + "_bulk", input, output, 1, 6.3f, 1800, 900);
+			String baseName = input.name().toLowerCase();
+
+			manager.addSmeltingAndBlasting(baseName + "_bulk", input, output, 1, 6.3f, 1800, 900);
 		}
 	}
 
