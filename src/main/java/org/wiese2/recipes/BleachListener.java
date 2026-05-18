@@ -59,11 +59,21 @@ public class BleachListener implements Listener {
 		registerGroup(Material.CANDLE, Material.WHITE_CANDLE, Material.ORANGE_CANDLE, Material.MAGENTA_CANDLE, Material.LIGHT_BLUE_CANDLE, Material.YELLOW_CANDLE, Material.LIME_CANDLE, Material.PINK_CANDLE,
 				Material.GRAY_CANDLE, Material.LIGHT_GRAY_CANDLE, Material.CYAN_CANDLE, Material.PURPLE_CANDLE, Material.BLUE_CANDLE, Material.BROWN_CANDLE, Material.GREEN_CANDLE, Material.RED_CANDLE,
 				Material.BLACK_CANDLE);
+
+		// Bundles
+		registerGroup(Material.BUNDLE, "WHITE_BUNDLE", "ORANGE_BUNDLE", "MAGENTA_BUNDLE", "LIGHT_BLUE_BUNDLE", "YELLOW_BUNDLE", "LIME_BUNDLE", "PINK_BUNDLE", "GRAY_BUNDLE", "LIGHT_GRAY_BUNDLE", "CYAN_BUNDLE",
+				"PURPLE_BUNDLE", "BLUE_BUNDLE", "BROWN_BUNDLE", "GREEN_BUNDLE", "RED_BUNDLE", "BLACK_BUNDLE");
 	}
 
-	private void registerGroup(Material output, Material... inputs) {
-		for (Material input : inputs) {
-			bleachMap.put(input, output);
+	private void registerGroup(Material output, Object... inputs) {
+		for (Object input : inputs) {
+			Material material = manager.resolveMaterial(input);
+
+			if (material == null) {
+				continue;
+			}
+
+			bleachMap.put(material, output);
 		}
 	}
 

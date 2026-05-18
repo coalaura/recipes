@@ -28,6 +28,7 @@ public class RecipeDefinitions {
 			{Material.GOLDEN_HELMET, Material.GOLD_INGOT, 2},
 			{Material.GOLDEN_BOOTS, Material.GOLD_INGOT, 2},
 			{Material.GOLDEN_HORSE_ARMOR, Material.GOLD_INGOT, 3},
+			{"GOLDEN_NAUTILUS_ARMOR", Material.GOLD_INGOT, 3},
 
 			// Gold Tools
 			{Material.GOLDEN_PICKAXE, Material.GOLD_INGOT, 1},
@@ -35,6 +36,7 @@ public class RecipeDefinitions {
 			{Material.GOLDEN_SWORD, Material.GOLD_INGOT, 1},
 			{Material.GOLDEN_HOE, Material.GOLD_INGOT, 1},
 			{Material.GOLDEN_SHOVEL, Material.GOLD_NUGGET, 5},
+			{"GOLDEN_SPEAR", Material.GOLD_NUGGET, 5},
 
 			// Gold Items/Blocks
             {Material.CLOCK, Material.GOLD_INGOT, 2},
@@ -47,6 +49,7 @@ public class RecipeDefinitions {
             {Material.IRON_HELMET, Material.IRON_INGOT, 2},
             {Material.IRON_BOOTS, Material.IRON_INGOT, 2},
             {Material.IRON_HORSE_ARMOR, Material.IRON_INGOT, 3},
+            {"IRON_NAUTILUS_ARMOR", Material.IRON_INGOT, 3},
 
             // Iron Tools
             {Material.IRON_PICKAXE, Material.IRON_INGOT, 1},
@@ -54,7 +57,7 @@ public class RecipeDefinitions {
             {Material.IRON_SWORD, Material.IRON_INGOT, 1},
             {Material.IRON_HOE, Material.IRON_INGOT, 1},
             {Material.IRON_SHOVEL, Material.IRON_NUGGET, 5},
-			{Material.SHEARS, Material.IRON_INGOT, 1},
+			{"IRON_SPEAR", Material.GOLD_NUGGET, 5},
 
 			// Iron Items/Blocks
             {Material.IRON_DOOR, Material.IRON_INGOT, 1},
@@ -65,6 +68,7 @@ public class RecipeDefinitions {
             {Material.CAULDRON, Material.IRON_INGOT, 3},
             {Material.ANVIL, Material.IRON_INGOT, 15},
             {Material.COMPASS, Material.IRON_INGOT, 2},
+			{Material.SHEARS, Material.IRON_INGOT, 1},
             {Material.HEAVY_WEIGHTED_PRESSURE_PLATE, Material.IRON_INGOT, 1},
             {Material.LANTERN, Material.IRON_NUGGET, 4},
             {Material.SOUL_LANTERN, Material.IRON_NUGGET, 4},
@@ -82,6 +86,7 @@ public class RecipeDefinitions {
             {"COPPER_HELMET", "COPPER_INGOT", 2},
             {"COPPER_BOOTS", "COPPER_INGOT", 2},
 			{"COPPER_HORSE_ARMOR", "COPPER_INGOT", 3},
+			{"COPPER_NAUTILUS_ARMOR", "COPPER_INGOT", 3},
 
             // Copper Tools
             {"COPPER_PICKAXE", "COPPER_INGOT", 1},
@@ -89,6 +94,7 @@ public class RecipeDefinitions {
             {"COPPER_SWORD", "COPPER_INGOT", 1},
             {"COPPER_HOE", "COPPER_INGOT", 1},
             {"COPPER_SHOVEL", "COPPER_NUGGET", 5},
+			{"COPPER_SPEAR", Material.GOLD_NUGGET, 5},
 
 			// Copper Chest
 			{"COPPER_CHEST", "COPPER_INGOT", 4},
@@ -260,6 +266,16 @@ public class RecipeDefinitions {
 			{ "POLISHED_TUFF_SLAB", "POLISHED_TUFF_STAIRS", "POLISHED_TUFF" },
 			{ "TUFF_BRICK_SLAB", "TUFF_BRICK_STAIRS", "TUFF_BRICKS" },
 
+			// Cinnabar
+			{ "CINNABAR_SLAB", "CINNABAR_STAIRS", "CINNABAR" },
+			{ "POLISHED_CINNABAR_SLAB", "POLISHED_CINNABAR_STAIRS", "POLISHED_CINNABAR" },
+			{ "CINNABAR_BRICK_SLAB", "CINNABAR_BRICK_STAIRS", "CINNABAR_BRICKS" },
+
+			// Sulfur
+			{ "SULFUR_SLAB", "SULFUR_STAIRS", "SULFUR" },
+			{ "POLISHED_SULFUR_SLAB", "POLISHED_SULFUR_STAIRS", "POLISHED_SULFUR" },
+			{ "SULFUR_BRICK_SLAB", "SULFUR_BRICK_STAIRS", "SULFUR_BRICKS" },
+
 			// Misc
 			{ Material.PRISMARINE_SLAB, Material.PRISMARINE_STAIRS, Material.PRISMARINE },
 			{ Material.PRISMARINE_BRICK_SLAB, Material.PRISMARINE_BRICK_STAIRS, Material.PRISMARINE_BRICKS },
@@ -270,7 +286,7 @@ public class RecipeDefinitions {
 			{ Material.SMOOTH_RED_SANDSTONE_SLAB, Material.SMOOTH_RED_SANDSTONE_STAIRS, Material.SMOOTH_RED_SANDSTONE },
 			{ Material.QUARTZ_SLAB, Material.QUARTZ_STAIRS, Material.QUARTZ_BLOCK },
 			{ Material.SMOOTH_QUARTZ_SLAB, Material.SMOOTH_QUARTZ_STAIRS, Material.SMOOTH_QUARTZ },
-			{ Material.MUD_BRICK_SLAB, Material.MUD_BRICK_STAIRS, Material.MUD_BRICKS }
+			{ Material.MUD_BRICK_SLAB, Material.MUD_BRICK_STAIRS, Material.MUD_BRICKS },
 		};
 		// @formatter:on
 
@@ -294,50 +310,56 @@ public class RecipeDefinitions {
 
 		// Stone Tools
 		// @formatter:off
-		Material[] stoneTools = {
+		Object[] stoneTools = {
 			Material.STONE_PICKAXE,
 			Material.STONE_AXE,
 			Material.STONE_SWORD,
 			Material.STONE_HOE,
 			Material.STONE_SHOVEL,
+			"STONE_SPEAR",
 		};
 		// @formatter:on
 
-		for (Material tool : stoneTools) {
-			manager.addStonecutting(tool.name().toLowerCase() + "_recycling", tool, Material.COBBLESTONE, 1);
+		for (Object tool : stoneTools) {
+			Material input = manager.resolveMaterial(tool);
+
+			if (input == null) {
+				continue;
+			}
+
+			manager.addStonecutting(input.name().toLowerCase() + "_recycling", input, Material.COBBLESTONE, 1);
 		}
 
 		// Stonecutter Crushing
 		manager.addStonecutting("crush_cobble_to_gravel", Material.COBBLESTONE, Material.GRAVEL, 1);
 		manager.addStonecutting("crush_gravel_to_sand", Material.GRAVEL, Material.SAND, 1);
-
-		// Cut Bundles
-		manager.addStonecutting("cut_bundles", Material.BUNDLE, Material.LEATHER, 1);
 	}
 
 	private void registerLeatherRecycling() {
-		// Leather Armor Recycling
 		// @formatter:off
 		Object[][] leatherRecycling = {
-			{ Material.LEATHER_CHESTPLATE, Material.LEATHER, 4 },
-			{ Material.LEATHER_LEGGINGS, Material.LEATHER, 3 },
-			{ Material.LEATHER_HELMET, Material.LEATHER, 2 },
-			{ Material.LEATHER_BOOTS, Material.LEATHER, 2 },
-			{ Material.LEATHER_HORSE_ARMOR, Material.LEATHER, 3 },
+			// Leather Armor
+			{ Material.LEATHER_CHESTPLATE, 4 },
+			{ Material.LEATHER_LEGGINGS, 3 },
+			{ Material.LEATHER_HELMET, 2 },
+			{ Material.LEATHER_BOOTS, 2 },
+			{ Material.LEATHER_HORSE_ARMOR, 3 },
+
+			// Bundles
+			{ Material.BUNDLE, 1 },
 		};
 		// @formatter:on
 
 		for (Object[] recipe : leatherRecycling) {
 			Material input = manager.resolveMaterial(recipe[0]);
-			Material output = manager.resolveMaterial(recipe[1]);
 
-			if (input == null || output == null) {
+			if (input == null) {
 				continue;
 			}
 
-			int amount = (int) recipe[2];
+			int amount = (int) recipe[1];
 
-			manager.addStonecutting(input.name().toLowerCase() + "_recycling", input, output, amount);
+			manager.addStonecutting(input.name().toLowerCase() + "_recycling", input, Material.LEATHER, amount);
 		}
 	}
 
