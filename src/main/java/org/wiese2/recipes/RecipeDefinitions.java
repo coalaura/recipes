@@ -292,6 +292,21 @@ public class RecipeDefinitions {
 			manager.addShapeless(baseName + "_from_stairs", block, 3, stairs, stairs, stairs, stairs);
 		}
 
+		// Stone Tools
+		// @formatter:off
+		Material[] stoneTools = {
+			Material.STONE_PICKAXE,
+			Material.STONE_AXE,
+			Material.STONE_SWORD,
+			Material.STONE_HOE,
+			Material.STONE_SHOVEL,
+		};
+		// @formatter:on
+
+		for (Material tool : stoneTools) {
+			manager.addStonecutting(tool.name().toLowerCase() + "_recycling", tool, Material.COBBLESTONE, 1);
+		}
+
 		// Stonecutter Crushing
 		manager.addStonecutting("crush_cobble_to_gravel", Material.COBBLESTONE, Material.GRAVEL, 1);
 		manager.addStonecutting("crush_gravel_to_sand", Material.GRAVEL, Material.SAND, 1);
