@@ -185,7 +185,10 @@ public class RecipeDefinitions {
             {"WAXED_COPPER_BULB", "COPPER_INGOT", 3},
             {"WAXED_EXPOSED_COPPER_BULB", "COPPER_INGOT", 3},
             {"WAXED_WEATHERED_COPPER_BULB", "COPPER_INGOT", 3},
-            {"WAXED_OXIDIZED_COPPER_BULB", "COPPER_INGOT", 3}
+            {"WAXED_OXIDIZED_COPPER_BULB", "COPPER_INGOT", 3},
+
+			// Resin
+			{"RESIN_BRICKS", "RESIN_BRICK", 4},
 		};
 		// @formatter:on
 
@@ -277,6 +280,9 @@ public class RecipeDefinitions {
 			{ "POLISHED_SULFUR_SLAB", "POLISHED_SULFUR_STAIRS", "POLISHED_SULFUR" },
 			{ "SULFUR_BRICK_SLAB", "SULFUR_BRICK_STAIRS", "SULFUR_BRICKS" },
 
+			// Resin
+			{ "RESIN_BRICKS", "RESIN_BRICK_STAIRS", "RESIN_BRICK_SLAB" },
+
 			// Misc
 			{ Material.PRISMARINE_SLAB, Material.PRISMARINE_STAIRS, Material.PRISMARINE },
 			{ Material.PRISMARINE_BRICK_SLAB, Material.PRISMARINE_BRICK_STAIRS, Material.PRISMARINE_BRICKS },
@@ -338,7 +344,7 @@ public class RecipeDefinitions {
 
 	private void registerDecorationRecycling() {
 		// @formatter:off
-		Object[][] woodFences = {
+		Material[][] woodFences = {
 			{Material.OAK_PLANKS, Material.OAK_FENCE, Material.OAK_FENCE_GATE},
 			{Material.SPRUCE_PLANKS, Material.SPRUCE_FENCE, Material.SPRUCE_FENCE_GATE},
 			{Material.BIRCH_PLANKS, Material.BIRCH_FENCE, Material.BIRCH_FENCE_GATE},
@@ -353,7 +359,7 @@ public class RecipeDefinitions {
 		};
 		// @formatter:on
 
-		for (Object[] wood : woodFences) {
+		for (Material[] wood : woodFences) {
 			Material planks = manager.resolveMaterial(wood[0]);
 			Material fence = manager.resolveMaterial(wood[1]);
 			Material gate = manager.resolveMaterial(wood[2]);
@@ -400,6 +406,7 @@ public class RecipeDefinitions {
 			{"SULFUR", "SULFUR_WALL"},
 			{"POLISHED_SULFUR", "POLISHED_SULFUR_WALL"},
 			{"SULFUR_BRICKS", "SULFUR_BRICK_WALL"},
+			{"RESIN_BRICKS", "RESIN_BRICK_WALL"},
 		};
 		// @formatter:on
 
@@ -462,6 +469,14 @@ public class RecipeDefinitions {
 		// 1 Block to 9 items
 		manager.addShapeless("uncraft_melon", Material.MELON_SLICE, 9, Material.MELON);
 		manager.addShapeless("uncraft_nether_wart_block", Material.NETHER_WART, 9, Material.NETHER_WART_BLOCK);
+
+		// Break down resin bricks
+		Material resinBrick = manager.resolveMaterial("RESIN_BRICK");
+		Material resinBricks = manager.resolveMaterial("RESIN_BRICKS");
+
+		if (resinBrick != null && resinBricks != null) {
+			manager.addShapeless("uncraft_resin_bricks", resinBrick, 4, resinBricks);
+		}
 	}
 
 	private void registerBulkSmelting() {
