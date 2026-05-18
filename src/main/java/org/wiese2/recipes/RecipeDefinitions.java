@@ -13,6 +13,7 @@ public class RecipeDefinitions {
 		registerMetalRecycling();
 		registerWoodRecycling();
 		registerStoneRecycling();
+		registerDecorationRecycling();
 		registerLeatherRecycling();
 		registerBlockUncrafting();
 		registerBulkSmelting();
@@ -333,6 +334,85 @@ public class RecipeDefinitions {
 		// Stonecutter Crushing
 		manager.addStonecutting("crush_cobble_to_gravel", Material.COBBLESTONE, Material.GRAVEL, 1);
 		manager.addStonecutting("crush_gravel_to_sand", Material.GRAVEL, Material.SAND, 1);
+	}
+
+	private void registerDecorationRecycling() {
+		// @formatter:off
+		Object[][] woodFences = {
+			{Material.OAK_PLANKS, Material.OAK_FENCE, Material.OAK_FENCE_GATE},
+			{Material.SPRUCE_PLANKS, Material.SPRUCE_FENCE, Material.SPRUCE_FENCE_GATE},
+			{Material.BIRCH_PLANKS, Material.BIRCH_FENCE, Material.BIRCH_FENCE_GATE},
+			{Material.JUNGLE_PLANKS, Material.JUNGLE_FENCE, Material.JUNGLE_FENCE_GATE},
+			{Material.ACACIA_PLANKS, Material.ACACIA_FENCE, Material.ACACIA_FENCE_GATE},
+			{Material.DARK_OAK_PLANKS, Material.DARK_OAK_FENCE, Material.DARK_OAK_FENCE_GATE},
+			{Material.MANGROVE_PLANKS, Material.MANGROVE_FENCE, Material.MANGROVE_FENCE_GATE},
+			{Material.CHERRY_PLANKS, Material.CHERRY_FENCE, Material.CHERRY_FENCE_GATE},
+			{Material.BAMBOO_PLANKS, Material.BAMBOO_FENCE, Material.BAMBOO_FENCE_GATE},
+			{Material.CRIMSON_PLANKS, Material.CRIMSON_FENCE, Material.CRIMSON_FENCE_GATE},
+			{Material.WARPED_PLANKS, Material.WARPED_FENCE, Material.WARPED_FENCE_GATE},
+		};
+		// @formatter:on
+
+		for (Object[] wood : woodFences) {
+			Material planks = manager.resolveMaterial(wood[0]);
+			Material fence = manager.resolveMaterial(wood[1]);
+			Material gate = manager.resolveMaterial(wood[2]);
+
+			if (planks == null || fence == null || gate == null) {
+				continue;
+			}
+
+			manager.addStonecutting(planks.name().toLowerCase() + "_to_fence", planks, fence, 1);
+			manager.addStonecutting(planks.name().toLowerCase() + "_to_fence_gate", planks, gate, 1);
+		}
+
+		// @formatter:off
+		Object[][] stoneWalls = {
+			{Material.COBBLESTONE, Material.COBBLESTONE_WALL},
+			{Material.MOSSY_COBBLESTONE, Material.MOSSY_COBBLESTONE_WALL},
+			{Material.STONE_BRICKS, Material.STONE_BRICK_WALL},
+			{Material.MOSSY_STONE_BRICKS, Material.MOSSY_STONE_BRICK_WALL},
+			{Material.ANDESITE, Material.ANDESITE_WALL},
+			{Material.DIORITE, Material.DIORITE_WALL},
+			{Material.GRANITE, Material.GRANITE_WALL},
+			{Material.SANDSTONE, Material.SANDSTONE_WALL},
+			{Material.RED_SANDSTONE, Material.RED_SANDSTONE_WALL},
+			{Material.BRICKS, Material.BRICK_WALL},
+			{Material.NETHER_BRICKS, Material.NETHER_BRICK_WALL},
+			{Material.RED_NETHER_BRICKS, Material.RED_NETHER_BRICK_WALL},
+			{Material.BLACKSTONE, Material.BLACKSTONE_WALL},
+			{Material.POLISHED_BLACKSTONE, Material.POLISHED_BLACKSTONE_WALL},
+			{Material.POLISHED_BLACKSTONE_BRICKS, Material.POLISHED_BLACKSTONE_BRICK_WALL},
+			{Material.COBBLED_DEEPSLATE, Material.COBBLED_DEEPSLATE_WALL},
+			{Material.POLISHED_DEEPSLATE, Material.POLISHED_DEEPSLATE_WALL},
+			{Material.DEEPSLATE_BRICKS, Material.DEEPSLATE_BRICK_WALL},
+			{Material.DEEPSLATE_TILES, Material.DEEPSLATE_TILE_WALL},
+			{Material.END_STONE_BRICKS, Material.END_STONE_BRICK_WALL},
+			{Material.NETHER_BRICKS, Material.NETHER_BRICK_FENCE},
+			{Material.MUD_BRICKS, Material.MUD_BRICK_WALL},
+			{Material.PRISMARINE, Material.PRISMARINE_WALL},
+			{"TUFF", "TUFF_WALL"},
+			{"POLISHED_TUFF", "POLISHED_TUFF_WALL"},
+			{"TUFF_BRICKS", "TUFF_BRICK_WALL"},
+			{"CINNABAR", "CINNABAR_WALL"},
+			{"POLISHED_CINNABAR", "POLISHED_CINNABAR_WALL"},
+			{"CINNABAR_BRICKS", "CINNABAR_BRICK_WALL"},
+			{"SULFUR", "SULFUR_WALL"},
+			{"POLISHED_SULFUR", "POLISHED_SULFUR_WALL"},
+			{"SULFUR_BRICKS", "SULFUR_BRICK_WALL"},
+		};
+		// @formatter:on
+
+		for (Object[] stone : stoneWalls) {
+			Material block = manager.resolveMaterial(stone[0]);
+			Material wall = manager.resolveMaterial(stone[1]);
+
+			if (block == null || wall == null) {
+				continue;
+			}
+
+			manager.addStonecutting(block.name().toLowerCase() + "_to_wall", block, wall, 1);
+		}
 	}
 
 	private void registerLeatherRecycling() {
