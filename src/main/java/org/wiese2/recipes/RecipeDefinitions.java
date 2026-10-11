@@ -17,10 +17,17 @@ public class RecipeDefinitions {
 		registerLeatherRecycling();
 		registerBlockUncrafting();
 		registerBulkSmelting();
+		registerBlastingFromSmelting();
 		registerMisc();
 	}
 
 	private void registerMetalRecycling() {
+		Material ironChain = manager.resolveMaterial("IRON_CHAIN");
+
+		if (ironChain == null) {
+			ironChain = Material.CHAIN;
+		}
+
 		// @formatter:off
 		Object[][] metalRecycling = {
 			// Gold Armor
@@ -64,6 +71,7 @@ public class RecipeDefinitions {
             {Material.IRON_DOOR, Material.IRON_INGOT, 1},
             {Material.IRON_TRAPDOOR, Material.IRON_INGOT, 2},
             {Material.IRON_BARS, Material.IRON_NUGGET, 2},
+			{ironChain, Material.IRON_NUGGET, 5},
 			{Material.MINECART, Material.IRON_INGOT, 2},
             {Material.BUCKET, Material.IRON_INGOT, 1},
             {Material.CAULDRON, Material.IRON_INGOT, 3},
@@ -232,8 +240,8 @@ public class RecipeDefinitions {
 			// 2 Slabs -> 1 Plank
 			manager.addShapeless(baseName + "_from_slabs", wood[2], 1, wood[0], wood[0]);
 
-			// 4 Stairs -> 3 Planks
-			manager.addShapeless(baseName + "_from_stairs", wood[2], 3, wood[1], wood[1], wood[1], wood[1]);
+			// 2 Stairs -> 2 Planks
+			manager.addShapeless(baseName + "_from_stairs", wood[2], 2, wood[1], wood[1]);
 		}
 	}
 
@@ -241,8 +249,10 @@ public class RecipeDefinitions {
 		// @formatter:off
 		Object[][] stoneTypes = {
 			// Basic
+			{ Material.STONE_SLAB, Material.STONE_STAIRS, Material.STONE },
 			{ Material.COBBLESTONE_SLAB, Material.COBBLESTONE_STAIRS, Material.COBBLESTONE },
 			{ Material.STONE_BRICK_SLAB, Material.STONE_BRICK_STAIRS, Material.STONE_BRICKS },
+			{ Material.MOSSY_STONE_BRICK_SLAB, Material.MOSSY_STONE_BRICK_STAIRS, Material.MOSSY_STONE_BRICKS },
 			{ Material.ANDESITE_SLAB, Material.ANDESITE_STAIRS, Material.ANDESITE },
 			{ Material.POLISHED_ANDESITE_SLAB, Material.POLISHED_ANDESITE_STAIRS, Material.POLISHED_ANDESITE },
 			{ Material.DIORITE_SLAB, Material.DIORITE_STAIRS, Material.DIORITE },
@@ -313,9 +323,11 @@ public class RecipeDefinitions {
 			// 2 Slabs -> 1 Block
 			manager.addShapeless(baseName + "_from_slabs", block, 1, slab, slab);
 
-			// 4 Stairs -> 3 Blocks
-			manager.addShapeless(baseName + "_from_stairs", block, 3, stairs, stairs, stairs, stairs);
+			// 2 Stairs -> 2 Blocks
+			manager.addShapeless(baseName + "_from_stairs", block, 2, stairs, stairs);
 		}
+
+		manager.addShapeless("smooth_stone_from_slabs", Material.SMOOTH_STONE, 1, Material.SMOOTH_STONE_SLAB, Material.SMOOTH_STONE_SLAB);
 
 		// Stone Tools
 		// @formatter:off
@@ -510,6 +522,26 @@ public class RecipeDefinitions {
 			String baseName = input.name().toLowerCase();
 
 			manager.addSmeltingAndBlasting(baseName + "_bulk", input, output, 1, 6.3f, 1800, 900);
+		}
+	}
+
+	private void registerBlastingFromSmelting() {
+		String[] furnaceRecipeIds = {
+			"stone",
+			"smooth_stone",
+			"deepslate",
+			"cracked_deepslate_bricks",
+			"cracked_deepslate_tiles",
+			"smooth_sandstone",
+			"smooth_red_sandstone",
+			"smooth_basalt",
+			"cracked_nether_bricks",
+			"cracked_polished_blackstone_bricks",
+			"smooth_quartz",
+		};
+
+		for (String furnaceRecipeId : furnaceRecipeIds) {
+			manager.addBlastingFromSmelting(furnaceRecipeId);
 		}
 	}
 

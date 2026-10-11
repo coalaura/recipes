@@ -5,8 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Keyed;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.BlastingRecipe;
 import org.bukkit.inventory.CookingRecipe;
 import org.bukkit.inventory.FurnaceRecipe;
@@ -22,9 +24,46 @@ import io.papermc.paper.potion.PotionMix;
 
 public class RecipeManager {
 	private final Plugin plugin;
+	private final List<NamespacedKey> recipeKeys = new ArrayList<>();
 
 	public RecipeManager(Plugin plugin) {
 		this.plugin = plugin;
+	}
+
+	public int getRecipeCount() {
+		return recipeKeys.size();
+	}
+
+	public void discoverRecipes(Player player) {
+		player.discoverRecipes(recipeKeys);
+	}
+
+	public void verifyRecipes(String phase) {
+		int missingCount = 0;
+
+		NamespacedKey firstMissing = null;
+
+		for (NamespacedKey key : recipeKeys) {
+			if (Bukkit.getRecipe(key) != null) {
+				continue;
+			}
+
+			missingCount++;
+
+			if (firstMissing == null) {
+				firstMissing = key;
+			}
+		}
+
+		int availableCount = recipeKeys.size() - missingCount;
+
+		String message = "Recipe registry check after " + phase + ": " + availableCount + "/" + recipeKeys.size() + " recipes available.";
+
+		if (missingCount > 0) {
+			plugin.getLogger().severe(message + " Previously registered recipes have been removed. First missing recipe: " + firstMissing);
+		} else {
+			plugin.getLogger().info(message);
+		}
 	}
 
 	public Material resolveMaterial(Object input) {
@@ -80,13 +119,39 @@ public class RecipeManager {
 		NamespacedKey smeltKey = new NamespacedKey(plugin, id + "_smelting");
 		FurnaceRecipe furnaceRecipe = new FurnaceRecipe(smeltKey, result, input, exp, smeltTime);
 
-		Bukkit.addRecipe(furnaceRecipe);
+		registerRecipe(furnaceRecipe);
 
 		// Blast Furnace (usually twice as fast)
 		NamespacedKey blastKey = new NamespacedKey(plugin, id + "_blasting");
 		BlastingRecipe blastingRecipe = new BlastingRecipe(blastKey, result, input, exp, blastTime);
 
-		Bukkit.addRecipe(blastingRecipe);
+		registerRecipe(blastingRecipe);
+	}
+
+	/**
+	 * Copies an existing vanilla furnace recipe to the blast furnace at twice the
+	 * speed.
+	 */
+	public void addBlastingFromSmelting(String furnaceRecipeId) {
+		NamespacedKey furnaceKey = NamespacedKey.minecraft(furnaceRecipeId);
+		Recipe source = Bukkit.getRecipe(furnaceKey);
+
+		if (!(source instanceof FurnaceRecipe furnaceRecipe)) {
+			plugin.getLogger().warning("Cannot create blast furnace recipe: " + furnaceKey + " is missing or is not a furnace recipe.");
+
+			return;
+		}
+
+		NamespacedKey blastKey = new NamespacedKey(plugin, furnaceRecipeId + "_blasting");
+
+		int blastTime = Math.max(1, furnaceRecipe.getCookingTime() / 2);
+
+		BlastingRecipe blastingRecipe = new BlastingRecipe(blastKey, furnaceRecipe.getResult(), furnaceRecipe.getInputChoice(), furnaceRecipe.getExperience(), blastTime);
+
+		blastingRecipe.setGroup(furnaceRecipe.getGroup());
+		blastingRecipe.setCategory(furnaceRecipe.getCategory());
+
+		registerRecipe(blastingRecipe);
 	}
 
 	/**
@@ -101,7 +166,7 @@ public class RecipeManager {
 			recipe.addIngredient(mat);
 		}
 
-		Bukkit.addRecipe(recipe);
+		registerRecipe(recipe);
 	}
 
 	/**
@@ -113,7 +178,7 @@ public class RecipeManager {
 
 		StonecuttingRecipe recipe = new StonecuttingRecipe(key, result, input);
 
-		Bukkit.addRecipe(recipe);
+		registerRecipe(recipe);
 	}
 
 	/**
@@ -125,7 +190,7 @@ public class RecipeManager {
 
 		SmokingRecipe recipe = new SmokingRecipe(key, result, input, exp, cookTime);
 
-		Bukkit.addRecipe(recipe);
+		registerRecipe(recipe);
 	}
 
 	/**
@@ -141,5 +206,21 @@ public class RecipeManager {
 		PotionMix mix = new PotionMix(key, result, inputChoice, ingredientChoice);
 
 		Bukkit.getPotionBrewer().addPotionMix(mix);
+	}
+
+	private <T extends Recipe & Keyed> void registerRecipe(T recipe) {
+		if (!Bukkit.addRecipe(recipe)) {
+			plugin.getLogger().warning("Failed to register recipe " + recipe.getKey());
+
+			return;
+		}
+
+		if (Bukkit.getRecipe(recipe.getKey()) == null) {
+			plugin.getLogger().severe("Server accepted recipe " + recipe.getKey() + " but it is missing from the recipe registry.");
+
+			return;
+		}
+
+		recipeKeys.add(recipe.getKey());
 	}
 }
